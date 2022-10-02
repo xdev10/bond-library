@@ -31,7 +31,6 @@ export enum PROTOCOL_NAMES {
   BIGFISHJOE_PROTOCOL = "BigfishjoeProtocol",
   BOND_PROTOCOL = "BondProtocol",
   DEVOLTAIRE_PROTOCOL = "DevoltaireProtocol",
-  OIGHTY_PROTOCOL = "OightyProtocol",
   TEX_PROTOCOL = "TexProtocol",
   OLYMPUS_DAO = "OlympusDAO",
 }
@@ -94,22 +93,17 @@ const ADDRESSES = [
   },
   {
     chainId: CHAIN_ID.GOERLI_TESTNET,
-    address: "0x19518E4D4E542f4b0Fc27366C23FaC7a0bA491Da",
-    protocol: PROTOCOL_NAMES.OIGHTY_PROTOCOL,
-  },
-  {
-    chainId: CHAIN_ID.GOERLI_TESTNET,
     address: "0xE5e93C4CBA55e98cCAa2618AC0772CD6fEEB43C5",
     protocol: PROTOCOL_NAMES.TEX_PROTOCOL,
   },
   {
     chainId: CHAIN_ID.ETHEREUM_MAINNET,
-    address: "0x64aa3364F17a4D01c6f1751Fd97C2BD3D7e7f1D5",
+    address: "0x0cf30dc0d48604A301dF8010cdc028C055336b2E",
     protocol: PROTOCOL_NAMES.OLYMPUS_DAO,
   },
   {
     chainId: CHAIN_ID.GOERLI_TESTNET,
-    address: "0xC1863141dc1861122d5410fB5973951c82871d98",
+    address: "0x19518E4D4E542f4b0Fc27366C23FaC7a0bA491Da",
     protocol: PROTOCOL_NAMES.OLYMPUS_DAO,
   },
 ];
@@ -166,21 +160,6 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       id: PROTOCOL_NAMES.DEVOLTAIRE_PROTOCOL,
       name: "DevoltaireProtocol",
       description: "We help devoltaire own his liquidity",
-      links: {
-        governanceVote: "",
-        twitter: "@bond_protocol",
-        github: "https://github.com/bond-protocol",
-        medium: "https://medium.com/@Bond_Protocol",
-        homepage: "https://bondprotocol.finance/",
-      },
-    },
-  ],
-  [
-    PROTOCOL_NAMES.OIGHTY_PROTOCOL,
-    {
-      id: PROTOCOL_NAMES.OIGHTY_PROTOCOL,
-      name: "OightyProtocol",
-      description: "We help oighty own his liquidity",
       links: {
         governanceVote: "",
         twitter: "@bond_protocol",
