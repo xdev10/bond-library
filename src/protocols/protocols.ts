@@ -1,4 +1,4 @@
-import { CHAIN_ID } from "../chains/chains";
+import { CHAIN_ID, CHAINS } from "../chains/chains";
 
 export interface Links {
   governanceVote: string; // REQUIRED: Link to a governance vote allowing your protocol to run a BondProtocol market\
@@ -33,7 +33,7 @@ export enum PROTOCOL_NAMES {
   DEVOLTAIRE_PROTOCOL = "DevoltaireProtocol",
   TEX_PROTOCOL = "TexProtocol",
   OLYMPUS_DAO = "OlympusDAO",
-  SHAPESHIFT_DAO = "ShapeShiftDAO"
+  SHAPESHIFT_DAO = "ShapeShiftDAO",
 }
 
 export const getProtocolByAddress = function (address: string, chain: CHAIN_ID | string): Protocol | null {
@@ -56,12 +56,22 @@ export const getAddressesByChain = function (chainId: CHAIN_ID): string[] {
   return addresses;
 };
 
+export const getProtocols = function (testnet: boolean): Protocol[] {
+  const protocols: Protocol[] = [];
+  ADDRESSES.forEach((address) => {
+    const protocol = PROTOCOLS.get(address.protocol);
+
+    if (protocol && !protocols.includes(protocol) && !testnet && !CHAINS.get(address.chainId)?.isTestnet) {
+      protocols.push(protocol);
+    } else if (protocol && !protocols.includes(protocol) && testnet && CHAINS.get(address.chainId)?.isTestnet) {
+      protocols.push(protocol);
+    }
+  });
+
+  return protocols;
+};
+
 const ADDRESSES = [
-  {
-    chainId: CHAIN_ID.ETHEREUM_MAINNET,
-    address: "0xda8b43d5DA504A3A418AeEDcE1Ece868536807fA",
-    protocol: PROTOCOL_NAMES.BOND_PROTOCOL,
-  },
   {
     chainId: CHAIN_ID.GOERLI_TESTNET,
     address: "0xda8b43d5DA504A3A418AeEDcE1Ece868536807fA",
@@ -213,7 +223,8 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       id: PROTOCOL_NAMES.SHAPESHIFT_DAO,
       name: "ShapeShiftDAO",
       description: "All the wallets. All the chains. All the protocols. Join our vision at ShapeShift.com",
-      logoUrl: "https://ipfs.io/ipfs/bafkreibggpxpfxxnxkudvlj5bherkjpjjetzzxbmfaquigbvhqg5xkx4li?filename=fox-token.png",
+      logoUrl:
+        "https://ipfs.io/ipfs/bafkreibggpxpfxxnxkudvlj5bherkjpjjetzzxbmfaquigbvhqg5xkx4li?filename=fox-token.png",
       links: {
         governanceVote: "https://snapshot.org/#/shapeshiftdao.eth",
         twitter: "@shapeshift",
