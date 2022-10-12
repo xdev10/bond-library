@@ -33,7 +33,8 @@ export enum PROTOCOL_NAMES {
   DEVOLTAIRE_PROTOCOL = "DevoltaireProtocol",
   TEX_PROTOCOL = "TexProtocol",
   OLYMPUS_DAO = "OlympusDAO",
-  SHAPESHIFT_DAO = "ShapeShiftDAO"
+  SHAPESHIFT_DAO = "ShapeShiftDAO",
+  NEW_ORDER = "NewOrder",
 }
 
 export const getProtocolByAddress = function (address: string, chain: CHAIN_ID | string): Protocol | null {
@@ -111,6 +112,11 @@ const ADDRESSES = [
     chainId: CHAIN_ID.ETHEREUM_MAINNET,
     address: "0x90a48d5cf7343b08da12e067680b4c6dbfe551be",
     protocol: PROTOCOL_NAMES.SHAPESHIFT_DAO,
+  },
+  {
+    chainId: CHAIN_ID.ETHEREUM_MAINNET,
+    address: "0x4a848F44146Ca6D1D6AA34bcdF3C41093deF1761",
+    protocol: PROTOCOL_NAMES.NEW_ORDER,
   },
 ];
 
@@ -213,7 +219,8 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       id: PROTOCOL_NAMES.SHAPESHIFT_DAO,
       name: "ShapeShiftDAO",
       description: "All the wallets. All the chains. All the protocols. Join our vision at ShapeShift.com",
-      logoUrl: "https://ipfs.io/ipfs/bafkreibggpxpfxxnxkudvlj5bherkjpjjetzzxbmfaquigbvhqg5xkx4li?filename=fox-token.png",
+      logoUrl:
+        "https://ipfs.io/ipfs/bafkreibggpxpfxxnxkudvlj5bherkjpjjetzzxbmfaquigbvhqg5xkx4li?filename=fox-token.png",
       links: {
         governanceVote: "https://snapshot.org/#/shapeshiftdao.eth",
         twitter: "@shapeshift",
@@ -221,6 +228,24 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
         medium: "https://medium.com/@shapeshift.com",
         homepage: "https://shapeshift.com/",
         staking: "https://app.shapeshift.com/#/demo/defi/earn",
+      },
+    },
+  ],
+  [
+    PROTOCOL_NAMES.NEW_ORDER,
+    {
+      id: PROTOCOL_NAMES.NEW_ORDER,
+      name: "NewOrder",
+      description: "A community-led incubation DAO building edge-of-the-edge DeFi products.",
+      logoUrl: "https://neworder.network/favicon32.png",
+      links: {
+        governanceVote: "https://snapshot.org/#/neworderdao.xyz",
+        twitter: "@neworderDAO",
+        github: "https://github.com/new-order-network",
+        medium: "https://medium.com/neworderdao",
+        homepage: "https://neworder.network/",
+        staking: "https://dao.neworder.network/invest",
+        discord: "https://discord.gg/mBdFUVdj",
       },
     },
   ],
