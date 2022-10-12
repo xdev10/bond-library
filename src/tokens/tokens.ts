@@ -368,7 +368,7 @@ export const TOKENS = new Map<string, Token>(
       },
     ],
     [
-      ["mainnet_0x77195bB23B8Dac9F05D16092C7290BB7d1F7F1d3".toLowerCase()],
+      ["mainnet_0xc08ED9a9ABEAbcC53875787573DC32Eee5E43513".toLowerCase()],
       {
         name: "NEWO-USDC SLP",
         symbol: "NEWO-USDC SLP",
