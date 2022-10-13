@@ -32,6 +32,7 @@ export enum PROTOCOL_NAMES {
   BOND_PROTOCOL = "BondProtocol",
   DEVOLTAIRE_PROTOCOL = "DevoltaireProtocol",
   TEX_PROTOCOL = "TexProtocol",
+  YELLA_PROTOCOL = "YellaProtocol",
   OLYMPUS_DAO = "OlympusDAO",
   SHAPESHIFT_DAO = "ShapeShiftDAO",
 }
@@ -106,6 +107,11 @@ const ADDRESSES = [
     chainId: CHAIN_ID.GOERLI_TESTNET,
     address: "0xE5e93C4CBA55e98cCAa2618AC0772CD6fEEB43C5",
     protocol: PROTOCOL_NAMES.TEX_PROTOCOL,
+  },
+  {
+    chainId: CHAIN_ID.GOERLI_TESTNET,
+    address: "0xcB6E1613029d790C00f89296808f278d6dc25B2f",
+    protocol: PROTOCOL_NAMES.YELLA_PROTOCOL,
   },
   {
     chainId: CHAIN_ID.ETHEREUM_MAINNET,
@@ -200,6 +206,22 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       },
     },
   ],
+  [
+    PROTOCOL_NAMES.YELLA_PROTOCOL,
+    {
+      id: PROTOCOL_NAMES.YELLA_PROTOCOL,
+      name: "YellaProtocol",
+      description: "We help Yella own his liquidity",
+      links: {
+        governanceVote: "",
+        twitter: "@bond_protocol",
+        github: "https://github.com/bond-protocol",
+        medium: "https://medium.com/@Bond_Protocol",
+        homepage: "https://bondprotocol.finance/",
+      },
+    },
+  ],
+
   [
     PROTOCOL_NAMES.OLYMPUS_DAO,
     {
