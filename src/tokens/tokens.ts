@@ -55,8 +55,7 @@ const mapReducer = (arr: any, [keys, val]: any) => [
   ...(Array.isArray(keys) ? [...keys.map((key) => [key, val])] : [[keys, val]]),
 ];
 
-// @ts-ignore
-export const TOKENS = new Map<string, Token>(
+export const TOKENS = new Map<string, Token | LpToken>(
   [
     [
       [
