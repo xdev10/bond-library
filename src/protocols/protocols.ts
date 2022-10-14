@@ -1,4 +1,4 @@
-import { CHAIN_ID } from "../chains/chains";
+import { CHAIN_ID, CHAINS } from "../chains/chains";
 
 export interface Links {
   governanceVote: string; // REQUIRED: Link to a governance vote allowing your protocol to run a BondProtocol market\
@@ -32,6 +32,7 @@ export enum PROTOCOL_NAMES {
   BOND_PROTOCOL = "BondProtocol",
   DEVOLTAIRE_PROTOCOL = "DevoltaireProtocol",
   TEX_PROTOCOL = "TexProtocol",
+  YELLA_PROTOCOL = "YellaProtocol",
   OLYMPUS_DAO = "OlympusDAO",
   SHAPESHIFT_DAO = "ShapeShiftDAO",
   NEW_ORDER = "NewOrder",
@@ -57,12 +58,22 @@ export const getAddressesByChain = function (chainId: CHAIN_ID): string[] {
   return addresses;
 };
 
+export const getProtocols = function (testnet: boolean): Protocol[] {
+  const protocols: Protocol[] = [];
+  ADDRESSES.forEach((address) => {
+    const protocol = PROTOCOLS.get(address.protocol);
+
+    if (protocol && !protocols.includes(protocol) && !testnet && !CHAINS.get(address.chainId)?.isTestnet) {
+      protocols.push(protocol);
+    } else if (protocol && !protocols.includes(protocol) && testnet && CHAINS.get(address.chainId)?.isTestnet) {
+      protocols.push(protocol);
+    }
+  });
+
+  return protocols;
+};
+
 const ADDRESSES = [
-  {
-    chainId: CHAIN_ID.ETHEREUM_MAINNET,
-    address: "0xda8b43d5DA504A3A418AeEDcE1Ece868536807fA",
-    protocol: PROTOCOL_NAMES.BOND_PROTOCOL,
-  },
   {
     chainId: CHAIN_ID.GOERLI_TESTNET,
     address: "0xda8b43d5DA504A3A418AeEDcE1Ece868536807fA",
@@ -99,8 +110,18 @@ const ADDRESSES = [
     protocol: PROTOCOL_NAMES.TEX_PROTOCOL,
   },
   {
+    chainId: CHAIN_ID.GOERLI_TESTNET,
+    address: "0xcB6E1613029d790C00f89296808f278d6dc25B2f",
+    protocol: PROTOCOL_NAMES.YELLA_PROTOCOL,
+  },
+  {
     chainId: CHAIN_ID.ETHEREUM_MAINNET,
     address: "0x245cc372C84B3645Bf0Ffe6538620B04a217988B",
+    protocol: PROTOCOL_NAMES.OLYMPUS_DAO,
+  },
+  {
+    chainId: CHAIN_ID.ETHEREUM_MAINNET,
+    address: "0x73D7e4BDdEcAd7379d679e60f22788E501493896",
     protocol: PROTOCOL_NAMES.OLYMPUS_DAO,
   },
   {
@@ -196,6 +217,22 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       },
     },
   ],
+  [
+    PROTOCOL_NAMES.YELLA_PROTOCOL,
+    {
+      id: PROTOCOL_NAMES.YELLA_PROTOCOL,
+      name: "YellaProtocol",
+      description: "We help Yella own his liquidity",
+      links: {
+        governanceVote: "",
+        twitter: "@bond_protocol",
+        github: "https://github.com/bond-protocol",
+        medium: "https://medium.com/@Bond_Protocol",
+        homepage: "https://bondprotocol.finance/",
+      },
+    },
+  ],
+
   [
     PROTOCOL_NAMES.OLYMPUS_DAO,
     {

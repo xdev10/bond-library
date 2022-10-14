@@ -55,8 +55,7 @@ const mapReducer = (arr: any, [keys, val]: any) => [
   ...(Array.isArray(keys) ? [...keys.map((key) => [key, val])] : [[keys, val]]),
 ];
 
-// @ts-ignore
-export const TOKENS = new Map<string, Token>(
+export const TOKENS = new Map<string, Token | LpToken>(
   [
     [
       [
@@ -133,7 +132,7 @@ export const TOKENS = new Map<string, Token>(
       {
         name: "USD Coin",
         symbol: "USDC",
-        logoUrl: "https://storageapi.fleek.co/fc635ae1-c8aa-4181-b7db-801a533b8fa9-bucket/WETH.png",
+        logoUrl: "https://storageapi.fleek.co/fc635ae1-c8aa-4181-b7db-801a533b8fa9-bucket/USDC.png",
         priceSources: new Map<number, SupportedPriceSource | CustomPriceSource>([
           [
             0,
