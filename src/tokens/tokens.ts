@@ -350,5 +350,38 @@ export const TOKENS = new Map<string, Token | LpToken>(
         ]),
       },
     ],
+    [
+      ["mainnet_0x98585dfc8d9e7d48f0b1ae47ce33332cf4237d96".toLowerCase()],
+      {
+        name: "New Order",
+        symbol: "NEWO",
+        priceSources: new Map<number, SupportedPriceSource | CustomPriceSource>([
+          [0, { source: "coingecko", apiId: "new-order" }],
+        ]),
+        purchaseLinks: new Map<CHAIN_ID, string>([
+          [
+            CHAIN_ID.ETHEREUM_MAINNET,
+            "https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0x98585dfc8d9e7d48f0b1ae47ce33332cf4237d96&chainId=1",
+          ],
+        ]),
+      },
+    ],
+    [
+      ["mainnet_0xc08ED9a9ABEAbcC53875787573DC32Eee5E43513".toLowerCase()],
+      {
+        name: "NEWO-USDC SLP",
+        symbol: "NEWO-USDC SLP",
+        lpType: SUPPORTED_LP_TYPES.SUSHISWAP,
+        token0Address: "mainnet_0x98585dfc8d9e7d48f0b1ae47ce33332cf4237d96".toLowerCase(),
+        token1Address: "mainnet_0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48".toLowerCase(),
+        priceSources: new Map(),
+        purchaseLinks: new Map<CHAIN_ID, string>([
+          [
+            CHAIN_ID.ETHEREUM_MAINNET,
+            "https://app.sushi.com/legacy/add/0x98585dFc8d9e7D48F0b1aE47ce33332CF4237D96/0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48?chainId=1",
+          ],
+        ]),
+      },
+    ],
   ].reduce(mapReducer, [])
 );

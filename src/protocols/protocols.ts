@@ -35,6 +35,7 @@ export enum PROTOCOL_NAMES {
   YELLA_PROTOCOL = "YellaProtocol",
   OLYMPUS_DAO = "OlympusDAO",
   SHAPESHIFT_DAO = "ShapeShiftDAO",
+  NEW_ORDER = "NewOrder",
 }
 
 export const getProtocolByAddress = function (address: string, chain: CHAIN_ID | string): Protocol | null {
@@ -119,6 +120,11 @@ const ADDRESSES = [
     protocol: PROTOCOL_NAMES.OLYMPUS_DAO,
   },
   {
+    chainId: CHAIN_ID.ETHEREUM_MAINNET,
+    address: "0x73D7e4BDdEcAd7379d679e60f22788E501493896",
+    protocol: PROTOCOL_NAMES.OLYMPUS_DAO,
+  },
+  {
     chainId: CHAIN_ID.GOERLI_TESTNET,
     address: "0x19518E4D4E542f4b0Fc27366C23FaC7a0bA491Da",
     protocol: PROTOCOL_NAMES.OLYMPUS_DAO,
@@ -127,6 +133,11 @@ const ADDRESSES = [
     chainId: CHAIN_ID.ETHEREUM_MAINNET,
     address: "0x90a48d5cf7343b08da12e067680b4c6dbfe551be",
     protocol: PROTOCOL_NAMES.SHAPESHIFT_DAO,
+  },
+  {
+    chainId: CHAIN_ID.ETHEREUM_MAINNET,
+    address: "0x4a848F44146Ca6D1D6AA34bcdF3C41093deF1761",
+    protocol: PROTOCOL_NAMES.NEW_ORDER,
   },
 ];
 
@@ -254,6 +265,24 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
         medium: "https://medium.com/@shapeshift.com",
         homepage: "https://shapeshift.com/",
         staking: "https://app.shapeshift.com/#/demo/defi/earn",
+      },
+    },
+  ],
+  [
+    PROTOCOL_NAMES.NEW_ORDER,
+    {
+      id: PROTOCOL_NAMES.NEW_ORDER,
+      name: "NewOrder",
+      description: "A community-led incubation DAO building edge-of-the-edge DeFi products.",
+      logoUrl: "https://neworder.network/favicon32.png",
+      links: {
+        governanceVote: "https://snapshot.org/#/neworderdao.xyz",
+        twitter: "@neworderDAO",
+        github: "https://github.com/new-order-network",
+        medium: "https://medium.com/neworderdao",
+        homepage: "https://neworder.network/",
+        staking: "https://dao.neworder.network/invest",
+        discord: "https://discord.gg/mBdFUVdj",
       },
     },
   ],
