@@ -274,7 +274,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       id: PROTOCOL_NAMES.NEW_ORDER,
       name: "NewOrder",
       description: "A community-led incubation DAO building edge-of-the-edge DeFi products.",
-      logoUrl: "https://neworder.network/favicon32.png",
+      logoUrl: "https://storageapi.fleek.co/fc635ae1-c8aa-4181-b7db-801a533b8fa9-bucket/NEWORDER.png",
       links: {
         governanceVote: "https://snapshot.org/#/neworderdao.xyz",
         twitter: "@neworderDAO",
