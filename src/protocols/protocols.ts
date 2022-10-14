@@ -150,7 +150,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       description: "We help aphex own his liquidity",
       links: {
         governanceVote: "",
-        twitter: "@bond_protocol",
+        twitter: "https://twitter.com/bond_protocol",
         github: "https://github.com/bond-protocol",
         medium: "https://medium.com/@Bond_Protocol",
         homepage: "https://bondprotocol.finance/",
@@ -165,7 +165,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       description: "We help bigfishjoe own his liquidity",
       links: {
         governanceVote: "",
-        twitter: "@bond_protocol",
+        twitter: "https://twitter.com/bond_protocol",
         github: "https://github.com/bond-protocol",
         medium: "https://medium.com/@Bond_Protocol",
         homepage: "https://bondprotocol.finance/",
@@ -180,7 +180,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       description: "We help protocols own their liquidity",
       links: {
         governanceVote: "",
-        twitter: "@bond_protocol",
+        twitter: "https://twitter.com/bond_protocol",
         github: "https://github.com/bond-protocol",
         medium: "https://medium.com/@Bond_Protocol",
         homepage: "https://bondprotocol.finance/",
@@ -195,7 +195,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       description: "We help devoltaire own his liquidity",
       links: {
         governanceVote: "",
-        twitter: "@bond_protocol",
+        twitter: "https://twitter.com/bond_protocol",
         github: "https://github.com/bond-protocol",
         medium: "https://medium.com/@Bond_Protocol",
         homepage: "https://bondprotocol.finance/",
@@ -210,7 +210,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       description: "We help tex own his liquidity",
       links: {
         governanceVote: "",
-        twitter: "@bond_protocol",
+        twitter: "https://twitter.com/bond_protocol",
         github: "https://github.com/bond-protocol",
         medium: "https://medium.com/@Bond_Protocol",
         homepage: "https://bondprotocol.finance/",
@@ -225,7 +225,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       description: "We help Yella own his liquidity",
       links: {
         governanceVote: "",
-        twitter: "@bond_protocol",
+        twitter: "https://twitter.com/bond_protocol",
         github: "https://github.com/bond-protocol",
         medium: "https://medium.com/@Bond_Protocol",
         homepage: "https://bondprotocol.finance/",
@@ -242,7 +242,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       logoUrl: "https://storageapi.fleek.co/fc635ae1-c8aa-4181-b7db-801a533b8fa9-bucket/OLYMPUSDAO.png",
       links: {
         governanceVote: "https://snapshot.org/#/olympusdao.eth",
-        twitter: "@olympusdao",
+        twitter: "https://twitter.com/olympusdao",
         github: "https://github.com/OlympusDAO",
         medium: "https://medium.com/@olympusdao",
         homepage: "https://olympusdao.finance/",
@@ -260,7 +260,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
         "https://ipfs.io/ipfs/bafkreibggpxpfxxnxkudvlj5bherkjpjjetzzxbmfaquigbvhqg5xkx4li?filename=fox-token.png",
       links: {
         governanceVote: "https://snapshot.org/#/shapeshiftdao.eth",
-        twitter: "@shapeshift",
+        twitter: "https://twitter.com/shapeshift",
         github: "https://github.com/shapeshift",
         medium: "https://medium.com/@shapeshift.com",
         homepage: "https://shapeshift.com/",
@@ -277,7 +277,7 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
       logoUrl: "https://storageapi.fleek.co/fc635ae1-c8aa-4181-b7db-801a533b8fa9-bucket/NEWORDER.png",
       links: {
         governanceVote: "https://snapshot.org/#/neworderdao.xyz",
-        twitter: "@neworderDAO",
+        twitter: "https://twitter.com/neworderDAO",
         github: "https://github.com/new-order-network",
         medium: "https://medium.com/neworderdao",
         homepage: "https://neworder.network/",
