@@ -355,6 +355,7 @@ export const TOKENS = new Map<string, Token | LpToken>(
       {
         name: "New Order",
         symbol: "NEWO",
+        logoUrl: "https://storageapi.fleek.co/fc635ae1-c8aa-4181-b7db-801a533b8fa9-bucket/NEWORDER.png",
         priceSources: new Map<number, SupportedPriceSource | CustomPriceSource>([
           [0, { source: "coingecko", apiId: "new-order" }],
         ]),
