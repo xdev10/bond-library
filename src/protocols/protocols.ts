@@ -36,6 +36,7 @@ export enum PROTOCOL_NAMES {
   OLYMPUS_DAO = "OlympusDAO",
   SHAPESHIFT_DAO = "ShapeShiftDAO",
   NEW_ORDER = "NewOrder",
+  INVERSE_FINANCE_DAO = "InverseFinanceDAO",
 }
 
 export const getProtocolByAddress = function (address: string, chain: CHAIN_ID | string): Protocol | null {
@@ -138,6 +139,11 @@ const ADDRESSES = [
     chainId: CHAIN_ID.ETHEREUM_MAINNET,
     address: "0x4a848F44146Ca6D1D6AA34bcdF3C41093deF1761",
     protocol: PROTOCOL_NAMES.NEW_ORDER,
+  },
+  {
+    chainId: CHAIN_ID.ETHEREUM_MAINNET,
+    address: "0x4b6c63E6a94ef26E2dF60b89372db2d8e211F1B7",
+    protocol: PROTOCOL_NAMES.INVERSE_FINANCE_DAO,
   },
 ];
 
@@ -283,6 +289,25 @@ export const PROTOCOLS = new Map<PROTOCOL_NAMES, Protocol>([
         homepage: "https://neworder.network/",
         staking: "https://dao.neworder.network/invest",
         discord: "https://discord.gg/mBdFUVdj",
+      },
+    },
+  ],
+  [
+    PROTOCOL_NAMES.INVERSE_FINANCE_DAO,
+    {
+      id: PROTOCOL_NAMES.INVERSE_FINANCE_DAO,
+      name: "InverseFinance",
+      description: "Inverse is part of the new wave of decentralized banking and finance, with at its core the innovative DOLA stablecoin.",
+      logoUrl: "https://assets.coingecko.com/coins/images/14205/large/inverse_finance.jpg?1614921871",
+      links: {
+        governanceVote: "https://www.inverse.finance/governance/proposals/mills/64",
+        twitter: "@InverseFinance",
+        discord: "https://discord.gg/YpYJC7R5nv",
+        telegram: "https://t.me/InverseFinance",
+        github: "https://github.com/InverseFinance",
+        medium: "https://www.inverse.finance/blog/en-US",
+        homepage: "https://www.inverse.finance",
+        staking: "https://www.inverse.finance/stake",
       },
     },
   ],

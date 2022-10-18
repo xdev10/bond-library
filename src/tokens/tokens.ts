@@ -383,5 +383,35 @@ export const TOKENS = new Map<string, Token | LpToken>(
         ]),
       },
     ],
+    [
+      ["mainnet_0x865377367054516e17014CcdED1e7d814EDC9ce4".toLowerCase()],
+      {
+        name: "DOLA",
+        symbol: "DOLA",
+        logoUrl:
+          "https://assets.coingecko.com/coins/images/14287/small/anchor-logo-1-200x200.png?1615275005",
+        priceSources: new Map<number, SupportedPriceSource | CustomPriceSource>([
+          [0, { source: "coingecko", apiId: "dola-usd" }],
+        ]),
+        purchaseLinks: new Map<CHAIN_ID, string>([
+          [CHAIN_ID.ETHEREUM_MAINNET, "https://inverse.finance/swap"],
+        ]),
+      },
+    ],
+    [
+      ["mainnet_0x41D5D79431A913C4aE7d69a668ecdfE5fF9DFB68".toLowerCase()],
+      {
+        name: "Inverse DAO",
+        symbol: "INV",
+        logoUrl:
+          "https://assets.coingecko.com/coins/images/14205/small/inverse_finance.jpg?1614921871",
+        priceSources: new Map<number, SupportedPriceSource | CustomPriceSource>([
+          [0, { source: "coingecko", apiId: "inverse-finance" }],
+        ]),
+        purchaseLinks: new Map<CHAIN_ID, string>([
+          [CHAIN_ID.ETHEREUM_MAINNET, "https://app.1inch.io/#/1/unified/swap/DAI/INV"],
+        ]),
+      },
+    ],
   ].reduce(mapReducer, [])
 );
