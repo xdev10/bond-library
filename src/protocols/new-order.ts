@@ -22,6 +22,7 @@ export default {
       name: "New Order",
       symbol: "NEWO",
       priceSources: [{ source: "coingecko", apiId: "new-order" }],
+      logoUrl: "https://storageapi.fleek.co/fc635ae1-c8aa-4181-b7db-801a533b8fa9-bucket/NEWORDER.png",
       purchaseLinks: {
         [CHAIN_ID.ETHEREUM_MAINNET]:
           "https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0x98585dfc8d9e7d48f0b1ae47ce33332cf4237d96&chainId=1",

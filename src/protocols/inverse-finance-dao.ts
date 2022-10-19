@@ -8,7 +8,7 @@ export default {
   logoUrl: "https://assets.coingecko.com/coins/images/14205/large/inverse_finance.jpg?1614921871",
   links: {
     governanceVote: "https://www.inverse.finance/governance/proposals/mills/64",
-    twitter: "@InverseFinance",
+    twitter: "https://twitter.com/InverseFinance",
     discord: "https://discord.gg/YpYJC7R5nv",
     telegram: "https://t.me/InverseFinance",
     github: "https://github.com/InverseFinance",
