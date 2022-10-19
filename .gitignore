@@ -5,7 +5,7 @@
 /build
 /dist
 dist
-/src/lp-pairs/contracts
+src/core/lp-pairs/contracts
 
 # misc
 .DS_Store
@@ -18,3 +18,4 @@ yarn-error.log*
 
 .idea
 .vscode/**
+src/**/generated

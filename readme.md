@@ -1,228 +1,207 @@
-# bond-library
+# ![logo](assets/logo-24.png) Bond Library
 
 Library containing off-chain details relating to bonds, protocols, tokens, chains etc
 
-## Verification Guide
+- [Protocol Verification](#protocol-verification)
+- [Token Verification](#tokens)
+- [More Token Verification](#other-tokens)
+- [References](#references)
 
-### Introduction
+## Introduction
 
 In order for bond markets to appear on the BondProtocol dapp market list, the market owner must have verified their
 details with us. In addition to this, the market quote and payout tokens should be verified, so that we can use
-off-chain data such as price feeds, token logos and so on in the dapp. Verification is done by making a pull request to
-this library. Once we have merged your PR and published the updated version of the library, the dapp will be ready to
-display your market details.
+off-chain data such as price feeds, token logos and so on in the dapp.
 
-### Protocol Verification
+Verification is done by making a pull request to this library. Once we have merged your PR and published the updated version of the library, the dapp will be ready to display your market details.
+Follow the guide below and submit a pull request to the `develop` branch.
 
-Protocol details should be added to `src/protocols/protocols.ts`.
+**If you do not have your own UI or other alternative, we
+strongly recommend waiting until it has been accepted before creating a market.**
 
-First, add an entry to the PROTOCOL_NAMES enum. This should be a unique string value. It will be used in the URL of the direct link to your protocol page, so be sure to choose something appropriate!
+---
 
-```
-export enum PROTOCOL_NAMES {
-    BOND_PROTOCOL = "BondProtocol",
-    OLYMPUS_DAO = "OlympusDAO",
-    YOUR_PROTOCOL = "YourProtocol",
-}
-```
+## Verification Guide
 
-Next, add your protocol details to the `PROTOCOLS` map. A `Protocol` object is defined as follows:
+You'll find most fields self-explanatory but below is a short guide on filling out the less obvious ones.
 
-```
-export interface Protocol {
-    id: string;           // Protocol ID, should be set as PROTOCOL_NAMES.YOUR_PROTOCOL
-    name: string;         // Display name of the protocol, this will be shown in the dapp UI
-    logo?: string;        // URL to your protocol's logo, preferably .png
-    description: string;  // A description of your protocol
-    links: Links;
-}
-```
+_For a detailed explanation on all fields and how they're used, check out_ [our docs 📘](https://docs.bondprotocol.finance/bond-marketplace/market-verification)
 
-This contains a `Links` object, defined as follows:
+## Protocol Verification
 
-```
-export interface Links {
-    governanceVote: string;   // REQUIRED: Link to a governance vote allowing your protocol to run a BondProtocol market\
-    twitter?: string;         // OPTIONAL links to social media, protocol websites etc
-    discord?: string;
-    github?: string;
-    medium?: string;
-    telegram?: string;
+Start out by running `yarn protocol your-protocol-name`. It'll generate a file in `src/protocols` from a template that you can start editing with your basic details
+
+### `links` to social media, homepage and governance
+
+```typescript
+export default {
+  //... your details
+  links: {
+    // REQUIRED: Link to a governance vote allowing your protocol to run a BondProtocol market
+    governanceVote: string;
     homepage?: string;
-    staking?: string;
-    dataStudio?: string;      // Link to data on bond market performance. Not required for verification, we will add when ready.
+    //socials...
+  };
 }
 ```
 
-NOTE: the `governanceVote` link is required. We are only able to display markets which are being offered by
-decentralized organizations that have held a vote allowing them to run BondProtocol market programs. Without this link,
-we will be unable to accept your verification request. The smart contracts are permissionless, so you are free to use
-them to run markets regardless, but you will need to provide your own UI or alternative solution.
+> NOTE: the `governanceVote` link is required. We are only able to display markets which are being offered by
+> decentralized organizations that have held a vote allowing them to run BondProtocol market programs. Without this link,
+> we will be unable to accept your verification request.
 
-Put this information into the `PROTOCOLS` map in the following format:
+**We support a bunch of socials, [check out the full list](#links)**
 
-```
-[
-    PROTOCOL_NAMES.BOND_PROTOCOL,
-    {
-        id: PROTOCOL_NAMES.BOND_PROTOCOL,
-        name: "BondProtocol",
-        description: "We help protocols own their liquidity",
-        links: {
-            governanceVote: "", <-- don't do this, your verification won't be accepted :)
-            twitter: "@bond_protocol",
-            github: "https://github.com/bond-protocol",
-            medium: "https://medium.com/@Bond_Protocol",
-            homepage: "https://bondprotocol.finance/",
-        },
-    },
-],
-```
+### `issuerAddresses`
 
-Finally, add the address(es) you wish to associate with your protocol to the `ADDRESSES` list. The `Address` object is
-defined as follows:
+This should be the address(es) you will use to execute the createMarket function on the contract.  
+You may have different addresses for different markets, markets on mainnet and testnet, or in the future, markets on multiple chains.
 
-```
-interface Address {
-    chainId: string;          // e.g. CHAIN_ID.ETHEREUM_MAINNET - See src/chains/chains.ts CHAIN_ID enum for a list of chain IDs.
-    address: string;          // The address you will use to call the create market transaction
-    protocol: PROTOCOL_NAMES; // e.g. PROTOCOL_NAMES.YOUR_PROTOCOL
+```typescript
+export default {
+  //... your details
+  issuerAddresses: {
+    [CHAIN_ID.ETHEREUM_MAINNET]: '0x0070000000000000000000000000000000000000',
+    [CHAIN_ID.GOERLI_TESTNET]: [
+    '0x0070000000000000000000000000000000001337',
+    '0x0070000000000000000000000000000000000420'
+    ]
+  };
 }
 ```
 
-Add the address/chain combinations to the `ADDRESSES` list. For example:
+> You must use `CHAIN_ID` to name your properties and make our lives easier, check them out [here](#chain_id)
 
-```
-{
-    chainId: CHAIN_ID.ETHEREUM_MAINNET,
-    address: "0xda8b43d5DA504A3A418AeEDcE1Ece868536807fA",
-    protocol: PROTOCOL_NAMES.BOND_PROTOCOL,
-},
-{
-    chainId: CHAIN_ID.GOERLI_TESTNET,
-    address: "0xda8b43d5DA504A3A418AeEDcE1Ece868536807fA",
-    protocol: PROTOCOL_NAMES.BOND_PROTOCOL,
-},
-{
-    chainId: CHAIN_ID.GOERLI_TESTNET,
-    address: "0x69442345d059895bd408e7bde8ab1428c009cc83",
-    protocol: PROTOCOL_NAMES.BOND_PROTOCOL,
-},
-```
+---
 
-In this case, any markets created on Ethereum Mainnet or Goerli Testnet by the
-address `0xda8b43d5DA504A3A418AeEDcE1Ece868536807fA` would be associated with `PROTOCOL_NAMES.BOND_PROTOCOL`, along with
-any created on Goerli Testnet by `0x69442345d059895bd408e7bde8ab1428c009cc83`. In this
-example, `0x69442345d059895bd408e7bde8ab1428c009cc83` would _not_ be associated with the protocol on Ethereum Mainnet.
+### `tokens`
 
-After this, make a pull request to the `develop` branch. If you do not have your own UI or other alternative, we
-strongly recommend waiting until it has been accepted before creating a market.
-
-### Token Verification
-
-Token verification is not strictly required, but strongly recommended. The most important part of token verification is
+Token verification allows us to use off-chain token data such as prices and logos. The most important part of token verification is
 providing a price source. Failure to do this will mean bond prices, discounts and so on will be displayed incorrectly in
 the dapp. The bonds will still work as expected on the contract level, but users would have to calculate prices and
 discounts manually.
 
-You will need to add a `Token` object to the `TOKENS` map in `src/tokens/tokens.ts`. The `Token` object is defined as
-follows:
+> If you're looking to add a token not related to your protocol check out [this section](#other-tokens)
 
-```
-export interface Token {
-    name: string;                   // The token name
-    symbol: string;                 // The token symbol
-    logoUrl?: string;               // A URL to the token logo, preferably .png
-    priceSources: Map<number, SupportedPriceSource | CustomPriceSource>;    // A map of price sources for the token. The `number` key represents the price source's priority, lower numbers being higher priority
-    purchaseLinks: Map<CHAIN_ID, string>;   // Link to a place where the token can be purchased
-}
-```
+Add tokens, like your governance token or LP, to the `tokens` array property as an object:
 
-The `name` and `symbol` fields allow the on-chain values to be overridden for more useful UI display. For example, most
-LP tokens use a default "Uniswap V2"/"UNI-V2" name and symbol, which isn't very helpful if multiple LP tokens are being
-displayed in a list. So these could be overriden as "ETH-GOHM Uniswap LP"/"ETH-GOHM" in our UI, for example.
+> NOTE: If you're adding an LP token, you should also ensure both tokens in the pair have been added.
 
-Price sources allow for multiple price sources to be listed in order of priority. We currently support Coingecko and
-custom functions. Price sources are defined as follows:
-
-```
-export interface PriceSource {
-    source: "coingecko" | "custom";
-}
-
-export interface SupportedPriceSource extends PriceSource {
-    source: "coingecko";
-    apiId: string;        // The token's Coingecko API ID
-}
-
-export interface CustomPriceSource extends PriceSource {
-    source: "custom";
-    customPriceFunction: () => Promise<string>;
-}
-```
-
-The map should be added to the `Token` object as follows:
-
-```
-priceSources: new Map<number, SupportedPriceSource | CustomPriceSource>([
-    [0, { source: "coingecko", apiId: "governance-ohm" }],
-    [1, {
-        source: "custom",
-        customPriceFunction: async () => {
-            /* Code goes here */
-            return priceString;
-        }
-    ]
-]),
-```
-
-Next, we have a map of `CHAIN_ID` to purchase link URL. Although we currently only support Ethereum and Goerli Testnet,
-BondProtocol will be going multi-chain in the near future. At that point, it will be useful to have different links per
-network. For example, many dexes use the token address and chain id in the URL to populate selectors, so even for the
-same token pair on the same dex, there might be different URL on different chains. Furthermore, the most liquid markets
-for a token may be on different dexes from one chain to another, so this allows us to direct users to the most
-appropriate one.
-
-The `purchaseLinks` map should be added to the `Token` object as in the following example:
-
-```
-purchaseLinks: new Map<CHAIN_ID, string>([
-    [CHAIN_ID.ETHEREUM_MAINNET, "https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5&chainId=1"],
-    [CHAIN_ID.GOERLI_TESTNET, "https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0x0595328847af962f951a4f8f8ee9a3bf261e4f6b&chainId=5"]
-])
-```
-
-The complete `Token` object should be added to the `TOKENS` map in the following format:
-
-```
-[
-    [
-        "mainnet_0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5".toLowerCase(),
-        "goerli_0x0595328847af962f951a4f8f8ee9a3bf261e4f6b".toLowerCase()
-    ],
+```typescript
+export default {
+  //... your details
+  tokens: [
     {
-        name: "Olympus",
-        symbol: "OHM",
-        priceSources: new Map<number, SupportedPriceSource | CustomPriceSource>([
-            [0, { source: "coingecko", apiId: "olympus" }],
-        ]),
-        purchaseLinks: new Map<CHAIN_ID, string>([
-            [CHAIN_ID.ETHEREUM_MAINNET, "https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5&chainId=1"],
-            [CHAIN_ID.GOERLI_TESTNET, "https://app.sushi.com/swap?inputCurrency=ETH&outputCurrency=0x0595328847af962f951a4f8f8ee9a3bf261e4f6b&chainId=5"]
-        ])
-    }
-],
+      name: "Wrapped Ether", // The token name
+      symbol: "WETH", // The token symbol
+      logoUrl: "<HTTPS://YOUR_LOGO.PNG>", // A URL to the token logo, preferably .png
+    },
+  ],
+};
 ```
 
-NOTE: the format of the map key includes the chain and the address, for example:
+### `priceSources` to fetch your token's price
 
+Used to get token prices and perform bond discount calculations.
+
+```typescript
+export default {
+  tokens: [
+    {
+      //... token details,
+      priceSources: [
+        // we load and prioritze by insertion order, first entry gets loaded first and so on
+        { source: "coingecko", apiId: "olympus" },
+        {
+          source: "custom",
+          customPriceFunction: async () => await fetch() /*...*/,
+        },
+      ],
+    },
+  ],
+};
 ```
-"mainnet_0x64aa3364f17a4d01c6f1751fd97c2bd3d7e7f1d5".toLowerCase(),
-"goerli_0x0595328847af962f951a4f8f8ee9a3bf261e4f6b".toLowerCase()
+
+We currently only support Coingecko or a custom price fetch function.
+
+### `addresses` of your ERC20 token contracts
+
+```typescript
+export default {
+  tokens: [
+    {
+      //... token details
+      addresses: [
+        {
+          [CHAIN_ID.ETHEREUM_MAINNET]: "0x0070000000000000000000000000000000000000",
+        },
+      ],
+    },
+  ],
+};
 ```
 
-This allows tokens available on multiple chains to share the same `Token` object. We call 'toLowerCase()' on all the
-strings.
+#### Adding LP Tokens? [Check out how here](https://docs.bondprotocol.finance/bond-marketplace/market-verification/token-verification/lp-tokens)
 
-After adding this, your PR should be ready, once we have accepted it, your token data will appear in the BondProtocol
-dapp UI.
+> #### Note for LP Tokens
+>
+> The `name` and `symbol` fields allow the on-chain values to be overridden for more useful UI display. For example, most
+> LP tokens use a default "Uniswap V2"/"UNI-V2" name and symbol, which isn't very helpful if multiple LP tokens are being
+> displayed in a list. So these could be overridden as "ETH-GOHM Uniswap LP"/"ETH-GOHM" in our UI, for example.
+
+After adding this, your PR should be ready, once we have accepted it, your token data will be available for the BondProtocol
+dapp UI to use.
+
+---
+
+## Other Tokens
+
+If there's a token you'd like to bond but we still haven't added yet, like a stablecoin or a strategic asset, you can add them too!
+
+Run `yarn token token_name` to generate a token file that you can edit! They follow the exact same structure of [token](#tokens).
+
+## References
+
+### `CHAIN_ID`
+
+A list of currently supported chains
+
+```typescript
+enum CHAIN_ID {
+  ETHEREUM_MAINNET,
+  GOERLI_TESTNET,
+}
+```
+
+### `Links`
+
+```typescript
+interface Links {
+  governanceVote: string;
+  homepage?: string;
+  twitter?: string;
+  discord?: string;
+  github?: string;
+  medium?: string;
+  telegram?: string;
+  staking?: string;
+}
+```
+
+### `PriceSources`
+
+```typescript
+interface PriceSource {
+  source: "coingecko" | "custom";
+  priority: number;
+}
+
+interface SupportedPriceSource extends PriceSource {
+  source: "coingecko";
+  apiId: string; // The token's Coingecko API ID
+}
+
+interface CustomPriceSource extends PriceSource {
+  source: "custom";
+  customPriceFunction: () => Promise<string>;
+}
+```

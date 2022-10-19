@@ -1,6 +1,6 @@
 {
   "name": "@bond-protocol/bond-library",
-  "version": "0.0.43",
+  "version": "0.1.0",
   "author": "spaceturtleship <spaceturtleship@protonmail.com>",
   "license": "MIT",
   "private": false,
@@ -32,13 +32,18 @@
     "test": "jest",
     "lint": "eslint --ignore-path .eslintignore --ext .js,.ts .",
     "lint-staged": "lint-staged",
-    "typechain": "typechain --target ethers-v5 --out-dir src/lp-pairs/contracts 'src/lp-pairs/abis/*.json'",
-    "prepare": "husky install",
-    "scriptname": "husky install"
+    "typechain": "typechain --target ethers-v5 --out-dir src/core/lp-pairs/contracts 'src/**/lp-pairs/abis/*.json'",
+    "protocol": "node ./src/duplicate.js",
+    "token": "node ./src/duplicate.js -t",
+    "generate": "ts-node ./src/core/generate-files.ts && prettier --write ./src/core/generated",
+    "prepare": "yarn generate && yarn build",
+    "postinstall": "yarn generate && husky install"
   },
   "dependencies": {
     "axios": "^0.27.2",
-    "ethers": "^5.6.8"
+    "ethers": "^5.6.8",
+    "require-dir": "^1.2.0",
+    "ts-node": "^10.9.1"
   },
   "types": "./dist/index.d.ts",
   "description": "Library containing off-chain metadata for BondProtocol markets, partners, tokens etc",

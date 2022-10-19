@@ -1,26 +1,5 @@
-export interface NativeCurrency {
-  name: string;
-  symbol: string;
-  decimals?: number;
-}
-
-export interface Chain {
-  displayName: string;
-  chainName: string;
-  chainId: string;
-  isTestnet: boolean;
-  nativeCurrency: NativeCurrency;
-  rpcUrls: string[];
-  blockExplorerUrls: string[];
-  blockExplorerName: string;
-  image: string;
-  imageAltText: string;
-}
-
-export enum CHAIN_ID {
-  ETHEREUM_MAINNET = "mainnet",
-  GOERLI_TESTNET = "goerli",
-}
+import { CHAIN_ID } from "../constants";
+import { Chain } from "../types";
 
 const ethereumMainnet: Chain = {
   displayName: "Ethereum",
@@ -58,11 +37,16 @@ const goerliTestnet: Chain = {
 
 export const CHAINS = new Map<string, Chain>([
   [CHAIN_ID.ETHEREUM_MAINNET, ethereumMainnet],
-  ["mainnet", ethereumMainnet],
   [CHAIN_ID.GOERLI_TESTNET, goerliTestnet],
-  ["goerli", goerliTestnet],
-  /*
-  [
+]);
+
+export const SUPPORTED_CHAINS: Chain[] = [
+  CHAINS.get(CHAIN_ID.ETHEREUM_MAINNET) as Chain,
+  CHAINS.get(CHAIN_ID.GOERLI_TESTNET) as Chain,
+];
+
+/*
+[
     CHAIN_ID.OPTIMISM_MAINNET,
     {
       displayName: "Optimism",
@@ -258,12 +242,5 @@ export const CHAINS = new Map<string, Chain>([
       image: "",
       imageAltText: "Avalanche Logo",
     },
-  ],*/
-]);
-
-export const SUPPORTED_CHAINS: Chain[] = [
-  // @ts-ignore
-  CHAINS.get(CHAIN_ID.ETHEREUM_MAINNET),
-  // @ts-ignore
-  CHAINS.get(CHAIN_ID.GOERLI_TESTNET),
-];
+  ]
+*/
