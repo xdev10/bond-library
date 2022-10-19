@@ -1,6 +1,6 @@
 {
   "name": "@bond-protocol/bond-library",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "author": "spaceturtleship <spaceturtleship@protonmail.com>",
   "license": "MIT",
   "private": false,
@@ -36,8 +36,7 @@
     "protocol": "node ./src/duplicate.js",
     "token": "node ./src/duplicate.js -t",
     "generate": "ts-node ./src/core/generate-files.ts && prettier --write ./src/core/generated",
-    "prepare": "yarn generate && yarn build",
-    "postinstall": "husky install"
+    "prepare": "yarn generate && yarn build"
   },
   "dependencies": {
     "axios": "^0.27.2",
