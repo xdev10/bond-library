@@ -95,5 +95,5 @@ export interface ProtocolDefinition extends Omit<Protocol, "id"> {
 export interface TokenDefinition extends Omit<Token, "priceSources" | "purchaseLinks"> {
   priceSources: Array<SupportedPriceSource | CustomPriceSource>; //List of prices sources
   purchaseLinks: { [key: string]: string }; // Links to where the token can be acquired
-  addresses: { [key: string]: string | string[] }; // Token contract addresse links
+  addresses: { [key: string]: string }; // Token contract address links
 }

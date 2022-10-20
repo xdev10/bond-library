@@ -11,9 +11,6 @@ export default {
   },
   addresses: {
     [CHAIN_ID.ETHEREUM_MAINNET]: "0x6b175474e89094c44da98b954eedeac495271d0f",
-    [CHAIN_ID.GOERLI_TESTNET]: [
-      "0x2899a03ffdab5c90badc5920b4f53b0884eb13cc",
-      "0x11fE4B6AE13d2a6055C8D9cF65c55bac32B5d844",
-    ],
+    [CHAIN_ID.GOERLI_TESTNET]: "0x2899a03ffdab5c90badc5920b4f53b0884eb13cc",
   },
 };

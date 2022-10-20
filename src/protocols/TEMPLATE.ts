@@ -35,7 +35,7 @@ export default {
       // Token contract addresses
       addresses: {
         [CHAIN_ID.ETHEREUM_MAINNET]: "0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2",
-        [CHAIN_ID.GOERLI_TESTNET]: ["0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6"], // You can add several testnet addresses
+        [CHAIN_ID.GOERLI_TESTNET]: "0xb4fbf271143f4fbf7b91a5ded31805e42b2208d6",
       },
       purchaseLinks: { [CHAIN_ID.ETHEREUM_MAINNET]: "https://app.uniswap.org/#/swap" }, // Where to acquire your token
       priceSources: [
