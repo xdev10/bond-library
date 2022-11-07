@@ -23,8 +23,11 @@ export const getPurchaseLinks = (links: { [key: string]: string }) => {
 export const toTokenFormat = (tokens: any[], token: any) => {
   const { addresses, purchaseLinks, ...details } = token;
 
-  const formattedAddresses = Object.keys(addresses).map((chain) => {
+  const formattedAddresses = Object.keys(addresses).flatMap((chain) => {
     const address = addresses[chain];
+    if (Array.isArray(address)) {
+      return address.map((a) => (chain + "_" + a).toLowerCase());
+    }
     return (chain + "_" + address).toLowerCase();
   });
 
