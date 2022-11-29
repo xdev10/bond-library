@@ -4,6 +4,8 @@ export { CUSTOM_PRICE_FEEDS };
 export enum CHAIN_ID {
   ETHEREUM_MAINNET = "mainnet",
   GOERLI_TESTNET = "goerli",
+  ARBITRUM_MAINNET = "arbitrum",
+  ARBITRUM_GOERLI_TESTNET = "arbitrum-goerli",
 }
 
 export enum SUPPORTED_LP_TYPES {

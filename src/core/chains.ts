@@ -35,14 +35,52 @@ const goerliTestnet: Chain = {
   imageAltText: "Ethereum Logo",
 };
 
+const arbitrumMainnet: Chain = {
+  displayName: "Arbitrum",
+  chainName: "arbitrum",
+  chainId: "42161",
+  isTestnet: false,
+  nativeCurrency: {
+    name: "Ethereum",
+    symbol: "ETH",
+    decimals: 18,
+  },
+  rpcUrls: ["https://arb1.arbitrum.io/rpc"],
+  blockExplorerUrls: ["https://arbiscan.io/#/"],
+  blockExplorerName: "Arbiscan",
+  image: "",
+  imageAltText: "Arbitrum Logo",
+};
+
+const arbitrumGoerliTestnet: Chain = {
+  displayName: "Arbitrum Goerli",
+  chainName: "arbitrum-goerli",
+  chainId: "421613",
+  isTestnet: false,
+  nativeCurrency: {
+    name: "Ethereum",
+    symbol: "AGOR",
+    decimals: 18,
+  },
+  rpcUrls: ["https://goerli-rollup.arbitrum.io/rpc"],
+  blockExplorerUrls: ["https://goerli.arbiscan.io/#/"],
+  blockExplorerName: "Arbiscan",
+  image: "",
+  imageAltText: "Arbitrum Logo",
+};
+
 export const CHAINS = new Map<string, Chain>([
   [CHAIN_ID.ETHEREUM_MAINNET, ethereumMainnet],
   [CHAIN_ID.GOERLI_TESTNET, goerliTestnet],
+  [CHAIN_ID.ARBITRUM_MAINNET, arbitrumMainnet],
+  [CHAIN_ID.ARBITRUM_GOERLI_TESTNET, arbitrumGoerliTestnet],
 ]);
 
 export const SUPPORTED_CHAINS: Chain[] = [
   CHAINS.get(CHAIN_ID.ETHEREUM_MAINNET) as Chain,
   CHAINS.get(CHAIN_ID.GOERLI_TESTNET) as Chain,
+  CHAINS.get(CHAIN_ID.ARBITRUM_MAINNET) as Chain,
+  CHAINS.get(CHAIN_ID.ARBITRUM_GOERLI_TESTNET) as Chain,
 ];
 
 /*
@@ -170,24 +208,6 @@ export const SUPPORTED_CHAINS: Chain[] = [
       blockExplorerName: "FTMScan",
       image: "",
       imageAltText: "Fantom Logo",
-    },
-  ],
-  [
-    CHAIN_ID.ARBITRUM_MAINNET,
-    {
-      displayName: "Arbitrum",
-      chainId: "42161",
-      isTestnet: false,
-      nativeCurrency: {
-        name: "Ethereum",
-        symbol: "ETH",
-        decimals: 18,
-      },
-      rpcUrls: ["https://arb1.arbitrum.io/rpc"],
-      blockExplorerUrls: ["https://arbiscan.io/#/"],
-      blockExplorerName: "Arbiscan",
-      image: "",
-      imageAltText: "Arbitrum Logo",
     },
   ],
   [
