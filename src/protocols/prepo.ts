@@ -1,7 +1,7 @@
-import { CHAIN_ID } from "../constants";
-import CUSTOM_PRICE_FEEDS from "../custom-price-feeds";
+import { CHAIN_ID, CUSTOM_PRICE_FEEDS } from "../constants";
 import { ProtocolDefinition } from "../types";
 
+// @ts-ignore
 export default {
   name: "prePO",
   description: "The Decentralized Exchange for Pre-IPO Stocks & Pre-IDO Tokens.",
@@ -21,7 +21,13 @@ export default {
       name: "prePO Token",
       symbol: "PPO",
       logoUrl: "https://i.imgur.com/NNI5hnR.png",
-      priceSources: [{ source: "custom", customPriceFunction: CUSTOM_PRICE_FEEDS.PPO }],
+      priceSources: [
+        {
+          source: "custom",
+          customPriceFunction: CUSTOM_PRICE_FEEDS.PPO,
+          providerChainId: CHAIN_ID.ARBITRUM_MAINNET,
+        },
+      ],
       purchaseLinks: { [CHAIN_ID.ARBITRUM_MAINNET]: "https://sale.prepo.io/" },
       addresses: { [CHAIN_ID.ARBITRUM_MAINNET]: "0xB40DBBb7931Cfef8Be73AEEC6c67d3809bD4600B" },
     },

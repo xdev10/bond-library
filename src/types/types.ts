@@ -1,3 +1,6 @@
+import { Provider } from "@ethersproject/providers";
+import { CHAIN_ID } from "../constants";
+
 export interface Address {
   chainId: string; // e.g. CHAIN_ID.ETHEREUM_MAINNET - See src/chains/chains.ts CHAIN_ID enum for a list of chain IDs.
   address: string; // The address you will use to call the create market transaction
@@ -83,9 +86,10 @@ export interface SupportedPriceSource extends PriceSource {
 export interface CustomPriceSource extends PriceSource {
   source: "custom";
   customPriceFunction: CustomPriceFunction;
+  providerChainId?: CHAIN_ID;
 }
 
-export type CustomPriceFunction = () => Promise<number>;
+export type CustomPriceFunction = (provider?: Provider) => Promise<number>;
 
 export interface ProtocolDefinition extends Omit<Protocol, "id"> {
   tokens: Array<TokenDefinition>; // List of protocol specific tokens like its governance or LP tokens

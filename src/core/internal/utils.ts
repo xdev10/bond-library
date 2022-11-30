@@ -8,8 +8,12 @@ export const mapReducer = (arr: any, [keys, val]: any) => [
 
 export const toPriceSources = (priceSource: SupportedPriceSource | CustomPriceSource) => {
   if (priceSource.source === "custom") {
-    //@ts-ignore (aphex) -> to improve but priceSource is intentionally a string instead of a function
-    return { source: priceSource.source, customPriceFunction: customFeeds[priceSource.customPriceFunction] };
+    return {
+      source: priceSource.source,
+      //@ts-ignore (aphex) -> to improve but priceSource is intentionally a string instead of a function
+      customPriceFunction: customFeeds[priceSource.customPriceFunction],
+      providerChainId: priceSource.providerChainId,
+    };
   }
   return priceSource;
 };
