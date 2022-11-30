@@ -25,8 +25,6 @@ export default {
       const priceBN = await fixedPriceContract.getFixedPrice();
 
       if (priceBN) return +formatUnits(priceBN, PRICE_DECIMALS);
-
-      throw new Error();
     } catch (e) {
       throw new Error("Error getting custom price for PPO token.");
     }
