@@ -56,7 +56,7 @@ const arbitrumGoerliTestnet: Chain = {
   displayName: "Arbitrum Goerli",
   chainName: "arbitrum-goerli",
   chainId: "421613",
-  isTestnet: false,
+  isTestnet: true,
   nativeCurrency: {
     name: "Ethereum",
     symbol: "AGOR",
