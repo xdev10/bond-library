@@ -71,6 +71,10 @@ export const protocols = [
         "0x24Ef8c193E02c0d952eC56C0097dF33b7947b7F6",
         "0x7700dd38aB343300bd9D45741D7c53ee711e4532",
       ],
+      [CHAIN_ID.ARBITRUM_GOERLI_TESTNET]: [
+        "0x24Ef8c193E02c0d952eC56C0097dF33b7947b7F6",
+        "0x7700dd38aB343300bd9D45741D7c53ee711e4532",
+      ],
     },
   },
   {
