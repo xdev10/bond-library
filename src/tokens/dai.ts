@@ -4,7 +4,7 @@ export default {
   name: "DAI",
   symbol: "DAI",
   logoUrl: "https://storageapi.fleek.co/fc635ae1-c8aa-4181-b7db-801a533b8fa9-bucket/DAI.png",
-  priceSources: [{ source: "custom", customPriceFunction: CUSTOM_PRICE_FEEDS.US_STABLE }],
+  priceSources: [{ source: "coingecko", apiId: "dai" }],
   purchaseLinks: {
     [CHAIN_ID.ETHEREUM_MAINNET]: "https://curve.fi/",
     [CHAIN_ID.GOERLI_TESTNET]: "https://app.compound.finance/",

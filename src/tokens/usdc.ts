@@ -12,5 +12,5 @@ export default {
     [CHAIN_ID.ETHEREUM_MAINNET]: "https://curve.fi/",
     [CHAIN_ID.GOERLI_TESTNET]: "https://app.compound.finance/",
   },
-  priceSources: [{ source: "custom", customPriceFunction: CUSTOM_PRICE_FEEDS.US_STABLE }],
+  priceSources: [{ source: "coingecko", apiId: "usd-coin" }],
 };
