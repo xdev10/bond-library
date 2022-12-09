@@ -21,9 +21,8 @@ export default {
     The address that should be allowed to spend your payout tokens
     and you'll deploy the market from like a multisig or other contract, or a wallet
   */
-  // TODO: update this
   issuerAddresses: {
-    [CHAIN_ID.ARBITRUM_MAINNET]: ["0x007000000000000000000000000000007405C0D3"],
+    [CHAIN_ID.ARBITRUM_MAINNET]: ["0xea8a734db4c7EA50C32B5db8a0Cb811707e8ACE3"],
   },
   // Tokens specific to your protocol like your governance token or LPs
   // If you're looking to add a strategic asset, stablecoin or an otherwise common base please check the tokens directory
